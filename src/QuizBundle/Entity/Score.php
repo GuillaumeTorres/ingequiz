@@ -28,6 +28,17 @@ class Score
      */
     private $score;
 
+    /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="score")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @ORM\OneToOne(targetEntity="QuizBundle\Entity\Quiz", inversedBy="score")
+     * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
+     */
+    private $quiz;
 
     /**
      * Get id
@@ -62,5 +73,52 @@ class Score
     {
         return $this->score;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Score
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set quiz
+     *
+     * @param \QuizBundle\Entity\Quiz $quiz
+     *
+     * @return Score
+     */
+    public function setQuiz(\QuizBundle\Entity\Quiz $quiz = null)
+    {
+        $this->quiz = $quiz;
+
+        return $this;
+    }
+
+    /**
+     * Get quiz
+     *
+     * @return \QuizBundle\Entity\Quiz
+     */
+    public function getQuiz()
+    {
+        return $this->quiz;
+    }
+}

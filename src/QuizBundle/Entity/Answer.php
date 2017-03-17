@@ -35,6 +35,12 @@ class Answer
      */
     private $isRight;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="QuizBundle\Entity\Question", inversedBy="answer")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", nullable=false)
+     */
+    private $question;
+
 
     /**
      * Get id
@@ -93,5 +99,28 @@ class Answer
     {
         return $this->isRight;
     }
-}
 
+    /**
+     * Set question
+     *
+     * @param \QuizBundle\Entity\Question $question
+     *
+     * @return Answer
+     */
+    public function setQuestion(\QuizBundle\Entity\Question $question)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \QuizBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}
