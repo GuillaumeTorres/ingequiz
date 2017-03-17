@@ -1,0 +1,3 @@
+quiz_homepage:
+    path:     /
+    defaults: { _controller: QuizBundle:Default:index }

@@ -22,6 +22,7 @@
 # Managed by Composer
 /app/bootstrap.php.cache
 /var/bootstrap.php.cache
+/var/SymfonyRequirements.php
 /bin/*
 !bin/console
 !bin/symfony_requirements
