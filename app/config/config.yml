@@ -7,11 +7,11 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
 
 framework:
     #esi:             ~
-    translator: ~
+    translator: { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -61,6 +61,28 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+
+easy_admin:
+    site_name: 'IngéQuiz'
+    entities:
+        User:
+            label: Utilisateurs
+            class: AppBundle\Entity\User
+        Quiz:
+            label: Questionnaires
+            class: QuizBundle\Entity\Quiz
+            form:
+                fields: ['name']
+        Question:
+            label: Questions
+            class: QuizBundle\Entity\Question
+            form:
+                fields: ['question', 'quiz']
+        Answer:
+            label: Réponses
+            class: QuizBundle\Entity\Answer
+            form:
+                fields: ['answer', 'is_right', 'question']
 
 fos_user:
     db_driver: orm

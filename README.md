@@ -7,6 +7,10 @@ composer install
 php bin/console doctrine:database:create
 php bin/console doctrine:schema:update --force
 php bin/console assets:install
+
+php bin/console fos:user:create admin admin@ingequiz.fr admin
+php bin/console fos:user:activate admin
+php bin/console fos:user:promote admin ROLE_ADMIN
  ```
 
 ### Commandes utiles ###
