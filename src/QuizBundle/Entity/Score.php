@@ -29,13 +29,13 @@ class Score
     private $score;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="score")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="score")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity="QuizBundle\Entity\Quiz", inversedBy="score")
+     * @ORM\ManyToOne(targetEntity="QuizBundle\Entity\Quiz", inversedBy="score")
      * @ORM\JoinColumn(name="quiz_id", referencedColumnName="id")
      */
     private $quiz;

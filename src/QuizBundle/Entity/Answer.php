@@ -29,7 +29,7 @@ class Answer
     private $answer;
 
     /**
-     * @var bool
+     * @var boolean
      *
      * @ORM\Column(name="is_right", type="boolean")
      */

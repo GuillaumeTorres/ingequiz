@@ -39,6 +39,10 @@ class Question
      */
     private $answer;
 
+    public function __toString()
+    {
+        return $this->question;
+    }
 
     /**
      * Get id

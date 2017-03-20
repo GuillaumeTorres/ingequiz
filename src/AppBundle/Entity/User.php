@@ -28,7 +28,7 @@ class User extends BaseUser
     private $quiz;
 
     /**
-     * @ORM\OneToOne(targetEntity="QuizBundle\Entity\Score", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="QuizBundle\Entity\Score", mappedBy="user")
      */
     private $score;
 
@@ -41,11 +41,13 @@ class User extends BaseUser
     {
         return $this->id;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
+        parent::__construct();
         $this->quiz = new \Doctrine\Common\Collections\ArrayCollection();
     }
 

@@ -40,9 +40,14 @@ class Quiz
     private $question;
 
     /**
-     * @ORM\OneToOne(targetEntity="QuizBundle\Entity\Score", mappedBy="quiz")
+     * @ORM\OneToMany(targetEntity="QuizBundle\Entity\Score", mappedBy="quiz")
      */
     private $score;
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 
     /**
      * Get id
