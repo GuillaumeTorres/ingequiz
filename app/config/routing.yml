@@ -1,5 +1,9 @@
 quiz:
     resource: "@QuizBundle/Resources/config/routing.yml"
+    prefix:   /quiz
+
+home:
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 app:

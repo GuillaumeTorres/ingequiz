@@ -1,1 +1,8 @@
-Hello World!
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <h2>Choisir un questionnaire</h2>
+    <form action="{{ path('quiz_homepage') }}" method="post">
+        {{ form_widget(form) }}
+    </form>
+{% endblock %}

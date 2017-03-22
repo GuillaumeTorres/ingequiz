@@ -10,7 +10,7 @@ php bin/console assets:install
 
 php bin/console fos:user:create admin admin@ingequiz.fr admin
 php bin/console fos:user:activate admin
-php bin/console fos:user:promote admin ROLE_ADMIN
+php bin/console fos:user:promote admin ROLE_SUPER_ADMIN
  ```
 
 ### Commandes utiles ###
