@@ -25,10 +25,10 @@ php bin/console server:start
 
 ```
  <VirtualHost *:80>
-    ServerName contestmanager.dev
-    DocumentRoot C:\wamp\www\contestmanager\web
+    ServerName ingequiz.dev
+    DocumentRoot \var\www\ingequiz\web
     SetEnv APPLICATION_ENV "development"
-    <Directory C:\wamp\www\contestmanager\web>
+    <Directory \var\www\ingequiz\web>
         DirectoryIndex app_dev.php
         Options Indexes FollowSymLinks Includes ExecCGI
         AllowOverride All
