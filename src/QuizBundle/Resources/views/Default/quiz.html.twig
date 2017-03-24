@@ -1,5 +1,8 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-    {{ quiz }}
+    <h2>{{ title }}</h2>
+    <form action="{{ path('quiz_homepage') }}" method="post">
+        {{ form_widget(form) }}
+    </form>
 {% endblock %}
