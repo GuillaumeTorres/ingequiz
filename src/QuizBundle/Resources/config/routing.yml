@@ -1,3 +1,7 @@
 quiz_homepage:
     path:     /
     defaults: { _controller: QuizBundle:Default:index }
+
+quiz_result:
+    path:     /result
+    defaults: { _controller: QuizBundle:Default:result }

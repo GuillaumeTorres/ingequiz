@@ -2,7 +2,7 @@
 
 {% block body %}
     <h2>{{ title }}</h2>
-    <form action="{{ path('quiz_homepage') }}" method="post">
+    <form action="{{ path('quiz_result') }}" method="POST">
         {{ form_widget(form) }}
     </form>
 {% endblock %}

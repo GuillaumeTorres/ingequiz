@@ -11,8 +11,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Form;
-use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -23,7 +23,7 @@ class DefaultController extends Controller
           ->add('quiz' , EntityType::class, array(
             'class' => 'QuizBundle\Entity\Quiz',
             'label' => 'Questionnaire',
-            'attr' => array('class' => 'form-group'),
+            'attr' => array('class' => 'form-control selectpicker selectRep'),
           ))
           ->add('start_tournament', SubmitType::class, array(
             'attr' => array('class' => 'btn btn-primary'),
@@ -48,6 +48,37 @@ class DefaultController extends Controller
     }
 
   /**
+   * @param Request $request
+   *
+   * @return Response
+   */
+  public function resultAction(Request $request)
+  {
+    $questions = $request->request->all()['form'];
+    unset($questions['save']);
+    unset($questions['_token']);
+    $isRight = true;
+    $score = 0;
+    foreach ($questions as $answers) {
+      foreach ((array)$answers as $answer) {
+        if (explode('_', $answer)[1] == '0') {
+          $isRight = false;
+        }
+      }
+
+      if ($isRight) {
+        $score++;
+      }
+    }
+    $convertScore = round(($score * 20) / count($questions), 2);
+
+    return $this->render('QuizBundle:Default:result.html.twig', array(
+      'score' => $score,
+      'convertScore' => $convertScore,
+    ));
+  }
+
+  /**
    * @param Quiz $quiz
    *
    * @return Form
@@ -63,6 +94,7 @@ class DefaultController extends Controller
         'choices' => $answers,
         'multiple' => true,
         'label' => $question->getQuestion(),
+        'attr' => array('class' => 'selectpicker selectRep'),
       ));
     }
     $form
@@ -83,8 +115,8 @@ class DefaultController extends Controller
   {
     $formatAnswers = [];
     /** @var Answer $answer */
-    foreach ($answers as $answer) {
-      $formatAnswers[$answer->getAnswer()] = $answer->getIsRight();
+    foreach ($answers as $key => $answer) {
+      $formatAnswers[$answer->getAnswer()] = $key.'_'.(integer)$answer->getIsRight();
     }
 
     return $formatAnswers;
