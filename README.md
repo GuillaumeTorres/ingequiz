@@ -21,6 +21,8 @@ php bin/console cache:clear [--env=prod]
 php bin/console server:start
 ```
 
+Url du back office: /admin (accès ROLE_SUPER_ADMIN)
+
 ### Configuration host
 
 ```
