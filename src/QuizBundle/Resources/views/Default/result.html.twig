@@ -1,7 +1,10 @@
 {% extends "::base.html.twig" %}
 
 {% block body %}
-    <h2>Résultat</h2>
-    <p>Vous avez {{ score }} bonnes réponses</p>
-    <p>Note: <strong>{{ convertScore }}/20</strong></p>
+    <div class="centerDiv">
+        <h2>{{ title }}</h2>
+        <form action="{{ path('quiz_result') }}" method="post" class="form-group">
+            {{ form_widget(form) }}
+        </form>
+    </div>
 {% endblock %}
