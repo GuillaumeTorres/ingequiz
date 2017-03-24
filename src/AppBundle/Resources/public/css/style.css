@@ -1,6 +1,12 @@
 a{
     text-decoration: none !important;
 }
+.centerDiv {
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+
 .divTitle {
     width: 100%;
     text-align: center;
@@ -67,3 +73,4 @@ input[type="password"] {
     position: relative;
     margin: 0;
 }
+
